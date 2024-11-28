@@ -2,14 +2,15 @@
 
 # Packages
 
-Package manager: yarn
-Build tool: turbo
-Paths:
-  - apps
-  - packages (distributable packages)
-  - shared (internal packages)
-
+- Package manager: yarn
+- Build tool: turbo
+- Paths:
+    - apps
+    - packages (distributable packages)
+    - shared (internal packages)
+- Depending on internal packages:
+    - use "*" instead of "workspace:*"
 
 # Source
 
-Language: TypeScript
+- Language: TypeScript
