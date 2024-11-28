@@ -1,0 +1,128 @@
+graph LR
+Root[UI Architecture]
+A[Component]
+Root --> A
+
+  subgraph Atomic_UI[Atomic UI]
+    B[Atom]
+    C[Molecule]
+    D[Organism]
+    B --> Text
+    Text["Text(props) : Renders text with various styles"]
+    B --> Image
+    Image["Image(props) : Renders an image element"]
+    B --> Icon
+    Icon["Icon(props) : Renders an icon"]
+    C --> Card
+    Card["Card(props) : Renders a container for content"]
+    C --> ListItem
+    ListItem["ListItem(props) : Renders an item in a list"]
+    C --> Badge
+    Badge["Badge(props) : Renders a small status indicator"]
+    D --> List
+    List["List(props) : Renders a list of items"]
+    D --> Grid
+    Grid["Grid(props) : Renders a grid layout"]
+    D --> Tabs
+    Tabs["Tabs(props) : Renders a tabbed interface"]
+  end
+
+  A --> B
+  A --> C
+  A --> D
+
+  subgraph Domain_Driven_UI[Domain-Driven UI]
+    E[Entity]
+    F[Aggregate]
+    G[Context]
+    E --> Customer
+    Customer["Customer(props, frame) : Displays a customer entity depending on the frame"]
+    E --> CustomerProfile
+    CustomerProfile["CustomerProfile(props) : Displays detailed customer profile information"]
+    E --> CustomerCard
+    CustomerCard["CustomerCard(props) : Displays the customer profile information on a card"]
+    E --> CustomerRow
+    CustomerRow["CustomerRow(props) : Displays detailed customer profile information as table row"]
+    E --> Order
+    Order["Order(props, frame) : Displays an order entity depending on the frame"]
+    E --> OrderSummary
+    OrderSummary["OrderSummary(props) : Displays a summary of an order"]
+    E --> OrderDetail
+    OrderDetail["OrderDetail(props) : Displays detailed order information"]
+    E --> OrderListItem
+    OrderListItem["OrderListItem(props) : Displays order information as a list item"]
+    E --> OrderItem
+    OrderItem["OrderItem(props) : Represents an individual item in an order"]
+    F --> OrderedItems
+    OrderedItems["OrderedItems(props) : Combines multiple order-related entities"]
+    F --> Orders
+    Orders["Orders(props) : Manages a collection of Order entities"]
+    G --> Settings
+    Settings["Settings(props) : Manages user settings-specific UI components"]
+  end
+
+  A --> E
+  A --> F
+  A --> G
+
+  subgraph Mouldable_UI[Mouldable UI]
+    H[Adaptive]
+    I[Composite]
+    J[Principle]
+    K[frames]
+    H --> Switch
+    Switch["Switch(props, K) : Selects component based on frame queries"]
+    I --> CompositeList
+    CompositeList["CompositeList(props, K) : Renders adaptive list based on frame queries"]
+    J --> Typography
+    Typography["TypographyPrinciple : Applies typography styles and rules"]
+    J --> AccessibleColor
+    AccessibleColor["AccessibleColorPrinciple : Applies accessible color schemes"]
+    J --> Locality
+    Locality["LocalityPrinciple : Applies localization and internationalization"]
+    K --> Query
+    Query["query : Provides methods to query the frame"]
+    K --> Constraint
+    Constraint["constraint : Defines constraints for frame queries"]
+    Query --> nodeWith
+    nodeWith["nodeWith({parent, children, siblings}) : Checks node relationships"]
+    Query --> inViewportOf
+    inViewportOf["inViewportOf({mediaQuery, constraints}) : Checks viewport conditions"]
+    Query --> isContainerOf
+    isContainerOf["isContainerOf({mediaQuery, constraints, maxDepth}) : Checks container conditions"]
+    Query --> element
+    element["element(type) : Checks element type in a frame"]
+    Query --> role
+    role["role(role) : Checks role in a frame"]
+    Query --> importance
+    importance["importance(level) : Checks importance level in a frame"]
+    Query --> background
+    background["background : Checks background properties in a frame"]
+    Query --> writingDirection
+    writingDirection["writingDirection : Checks writing direction in a frame"]
+    Query --> font
+    font["font(type) : Checks font type in a frame"]
+    Constraint --> is
+    is["is(Q) : Checks if a query matches the current a frame"]
+    Constraint --> always
+    always["always : Always returns true"]
+    Constraint --> never
+    never["never : Always returns false"]
+    Constraint --> valid
+    valid["valid(Q) : Checks if a query is valid in the current a frame"]
+    Constraint --> preferred
+    preferred["preferred(Q) : Checks if a query is preferred in the current a frame"]
+    Constraint --> isValid
+    isValid["isValid(Q) : Checks if a query is valid (alternative syntax)"]
+  end
+
+  A --> H
+  A --> I
+  A --> J
+  Root --> K
+
+  classDef default fill:#bbf,stroke:#333,stroke-width:2px;
+  classDef dir fill:#f9f,stroke:#333,stroke-width:2px;
+  classDef file fill:#ff9,stroke:#333,stroke-width:2px;
+  class Atomic_UI,Domain_Driven_UI,Mouldable_UI,Context,Query,Constraint,Atom,Molecule,Organism,Entity,Aggregate,Context dir;
+  class Text,Image,Icon,Card,ListItem,Badge,List,Grid,Tabs,Customer,CustomerProfile,CustomerCard,CustomerRow,Order,OrderSummary,OrderDetail,OrderListItem,OrderItem,OrderedItems,Orders,Settings,Switch,CompositeList,Typography,AccessibleColor,Locality file;

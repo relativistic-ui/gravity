@@ -1,0 +1,15 @@
+# This Repository
+
+# Packages
+
+Package manager: yarn
+Build tool: turbo
+Paths:
+  - apps
+  - packages (distributable packages)
+  - shared (internal packages)
+
+
+# Source
+
+Language: TypeScript

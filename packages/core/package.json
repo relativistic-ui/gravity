@@ -1,0 +1,23 @@
+{
+  "name": "@relativistic-ui/gravity-core",
+  "version": "1.0.0",
+  "description": "Core types, etc for @relativistic-ui/gravity",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/relativistic-ui/gravity",
+  "author": "Bahiul Neel Upadhyaya",
+  "license": "Apache 2.0",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "dev": "tsc --watch",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@relativistic-ui/typescript-config": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

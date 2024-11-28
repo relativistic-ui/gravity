@@ -1,0 +1,172 @@
+graph LR
+    %% Mouldable UI
+    %% Principles
+    PrincipleTypography((PrincipleTypography))
+    PrincipleTypography["TypographyPrinciple : Applies typography styles and rules"]
+    PrincipleAccessibleColor((PrincipleAccessibleColor))
+    PrincipleAccessibleColor["AccessibleColorPrinciple : Applies accessible color schemes"]
+    PrincipleLocality((PrincipleLocality))
+    PrincipleLocality["LocalityPrinciple : Applies localization and internationalization"]
+
+    %% Composites
+    CompositeList((CompositeList))
+    CompositeList["CompositeList(props, K) : Renders adaptive list based on context queries"]
+
+    %% Adaptives
+    AdaptiveSwitch((AdaptiveSwitch))
+    AdaptiveSwitch["AdaptiveSwitch(props, K) : Selects component based on context queries"]
+
+    %% Domain-Driven UI
+    %% Aggregates
+    AggregateOrderedItems((AggregateOrderedItems))
+    AggregateOrderedItems["AggregateOrderedItems(props) : Combines multiple order-related entities"]
+    AggregateOrders((AggregateOrders))
+    AggregateOrders["AggregateOrders(props) : Manages a collection of Order entities"]
+
+    %% Entities
+    EntityCustomer((EntityCustomer))
+    EntityCustomer["EntityCustomer(props, context) : Displays a customer entity depending on context"]
+    EntityCustomerProfile((EntityCustomerProfile))
+    EntityCustomerProfile["EntityCustomerProfile(props) : Displays detailed customer profile information"]
+    EntityCustomerCard((EntityCustomerCard))
+    EntityCustomerCard["EntityCustomerCard(props) : Displays the customer profile information on a card"]
+    EntityCustomerRow((EntityCustomerRow))
+    EntityCustomerRow["EntityCustomerRow(props) : Displays detailed customer profile information as table row"]
+    EntityOrder((EntityOrder))
+    EntityOrder["EntityOrder(props, context) : Displays an order entity depending on context"]
+    EntityOrderSummary((EntityOrderSummary))
+    EntityOrderSummary["EntityOrderSummary(props) : Displays a summary of an order"]
+    EntityOrderDetail((EntityOrderDetail))
+    EntityOrderDetail["EntityOrderDetail(props) : Displays detailed order information"]
+    EntityOrderListItem((EntityOrderListItem))
+    EntityOrderListItem["EntityOrderListItem(props) : Displays order information as a list item"]
+    EntityOrderItem((EntityOrderItem))
+    EntityOrderItem["EntityOrderItem(props) : Represents an individual item in an order"]
+
+    %% Atomic UI
+    %% Organisms
+    OrganismList((OrganismList))
+    OrganismList["OrganismList(props) : Renders a list of items"]
+    OrganismGrid((OrganismGrid))
+    OrganismGrid["OrganismGrid(props) : Renders a grid layout"]
+
+    %% Molecules
+    MoleculeCard((MoleculeCard))
+    MoleculeCard["MoleculeCard(props) : Renders a container for content"]
+    MoleculeListItem((MoleculeListItem))
+    MoleculeListItem["MoleculeListItem(props) : Renders an item in a list"]
+    MoleculeBadge((MoleculeBadge))
+    MoleculeBadge["MoleculeBadge(props) : Renders a small status indicator"]
+
+    %% Atoms
+    AtomText((AtomText))
+    AtomText["AtomText(props) : Renders text with various styles"]
+    AtomImage((AtomImage))
+    AtomImage["AtomImage(props) : Renders an image element"]
+    AtomIcon((AtomIcon))
+    AtomIcon["AtomIcon(props) : Renders an icon"]
+
+    %% Frame
+    FrameQuery((FrameQuery))
+    FrameQuery["FrameQuery : Provides methods to query the context"]
+    FrameConstraint((FrameConstraint))
+    FrameConstraint["FrameConstraint : Defines constraints for context queries"]
+
+    %% Connections
+    EntityCustomer -->|"uses"| AdaptiveSwitch
+    EntityOrder -->|"uses"| AdaptiveSwitch
+
+    EntityCustomer -->|"case[]: inContainerOf(...)"| EntityCustomerProfile
+    EntityCustomer -->|"case[]: nodeWith({parent: isGrid})"| EntityCustomerCard
+    EntityCustomer -->|"case[]: nodeWith({parent: isTable})"| EntityCustomerRow
+    EntityOrder -->|"case[]: inContainerOf(...)"| EntityOrderSummary
+    EntityOrder -->|"case[]: nodeWith({parent: isDetailView})"| EntityOrderDetail
+    EntityOrder -->|"case[]: nodeWith({parent: isList})"| EntityOrderListItem
+
+    CompositeList -->|"uses"| AdaptiveSwitch
+    CompositeList -->|"renders"| OrganismList
+    CompositeList -->|"renders"| OrganismGrid
+
+    AggregateOrderedItems -->|"uses"| CompositeList
+    AggregateOrders -->|"uses"| CompositeList
+    AggregateOrderedItems -->|"item"| EntityOrderItem
+    AggregateOrders -->|"item"| EntityOrder
+
+    EntityCustomerProfile -->|"renders"| AtomText
+    EntityCustomerProfile -->|"renders"| AtomImage
+    EntityCustomerCard -->|"renders"| AtomText
+    EntityCustomerCard -->|"renders"| AtomImage
+    EntityCustomerCard -->|"renders"| AtomIcon
+    EntityCustomerCard -->|"renders"| MoleculeCard
+    EntityCustomerRow -->|"renders"| AtomText
+    EntityCustomerRow -->|"renders"| MoleculeListItem
+    EntityOrderSummary -->|"renders"| AtomText
+    EntityOrderSummary -->|"renders"| MoleculeCard
+    EntityOrderSummary -->|"renders"| MoleculeBadge
+    EntityOrderDetail -->|"renders"| AtomText
+    EntityOrderDetail -->|"renders"| MoleculeBadge
+    EntityOrderListItem -->|"renders"| AtomText
+    EntityOrderListItem -->|"renders"| AtomIcon
+    EntityOrderListItem -->|"renders"| MoleculeListItem
+
+    AtomText -->|"element('label')"| PrincipleTypography
+    AtomText -->|"valid(role('primary'))"| PrincipleAccessibleColor
+
+    AtomIcon -->|"preferred(element('status'))"| PrincipleAccessibleColor
+
+    MoleculeBadge -->|"valid(importance('high'))"| PrincipleAccessibleColor
+
+    MoleculeCard -->|"valid(background)"| PrincipleAccessibleColor
+    MoleculeCard -->|"preferred(writingDirection)"| PrincipleLocality
+
+    PrincipleTypography -->|"isValid(font('body'))"| PrincipleLocality
+
+    FrameQuery --> nodeWith
+    nodeWith["nodeWith({parent, children, siblings}) : Checks node relationships"]
+    FrameQuery --> inViewportOf
+    inViewportOf["inViewportOf({mediaQuery, constraints}) : Checks viewport conditions"]
+    FrameQuery --> isContainerOf
+    isContainerOf["isContainerOf({mediaQuery, constraints, maxDepth}) : Checks container conditions"]
+    FrameQuery --> element
+    element["element(type) : Checks element type in context"]
+    FrameQuery --> role
+    role["role(role) : Checks role in context"]
+    FrameQuery --> importance
+    importance["importance(level) : Checks importance level in context"]
+    FrameQuery --> background
+    background["background : Checks background properties in context"]
+    FrameQuery --> writingDirection
+    writingDirection["writingDirection : Checks writing direction in context"]
+    FrameQuery --> font
+    font["font(type) : Checks font type in context"]
+
+    FrameConstraint --> is
+    is["is(Q) : Checks if a query matches the current context"]
+    FrameConstraint --> always
+    always["always : Always returns true"]
+    FrameConstraint --> never
+    never["never : Always returns false"]
+    FrameConstraint --> valid
+    valid["valid(Q) : Checks if a query is valid in the current context"]
+    FrameConstraint --> preferred
+    preferred["preferred(Q) : Checks if a query is preferred in the current context"]
+    FrameConstraint --> isValid
+    isValid["isValid(Q) : Checks if a query is valid (alternative syntax)"]
+
+    classDef atomic fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef adaptive fill:#ff9,stroke:#333,stroke-width:2px;
+    classDef composite fill:#ffd,stroke:#333,stroke-width:2px;
+    classDef entity fill:#9ff,stroke:#333,stroke-width:2px;
+    classDef aggregate fill:#f99,stroke:#333,stroke-width:2px;
+    classDef principle fill:#dff,stroke:#333,stroke-width:2px;
+    classDef context fill:#fdf,stroke:#333,stroke-width:2px;
+    classDef greyedOut fill:#ddd,stroke:#999,stroke-width:1px;
+    class AtomText,AtomImage,AtomIcon,MoleculeCard,MoleculeListItem,MoleculeBadge,OrganismList,OrganismGrid atomic;
+    class AdaptiveSwitch adaptive;
+    class CompositeList composite;
+    class EntityCustomer,EntityCustomerProfile,EntityCustomerCard,EntityCustomerRow,EntityOrder,EntityOrderSummary,EntityOrderDetail,EntityOrderListItem,EntityOrderItem entity;
+    class AggregateOrderedItems,AggregateOrders aggregate;
+    class PrincipleTypography,PrincipleAccessibleColor,PrincipleLocality principle;
+    class FrameQuery,FrameConstraint context;
+
+
