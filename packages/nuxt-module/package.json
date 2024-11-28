@@ -1,6 +1,6 @@
 {
   "name": "@relativistic-ui/gravity-nuxt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gravity Nuxt module",
   "repository": "your-org/my-module",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build build",
+    "build": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
