@@ -44,3 +44,9 @@ export interface IntentQuery {
   interact?: IntentPattern<InteractIntent>
   affords?: IntentPattern<AffordanceIntent>
 }
+
+export type IntentToken = string
+
+export interface IntentQueryMap {
+  [key: IntentToken]: IntentQuery
+}
