@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { GRAVITY_INTENT_KEY } from './composables/useIntent'
+import { GRAVITY_INTENT_KEY } from './composables/useIntent.js'
 import type { Intent } from '@relativistic-ui/gravity-core'
 
 export interface GravityPluginOptions {

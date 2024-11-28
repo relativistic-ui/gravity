@@ -1,2 +1,2 @@
-export * from './composables/useIntent'
-export * from './plugin' 
+export * from './composables/useIntent.js'
+export * from './plugin.js' 

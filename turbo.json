@@ -36,6 +36,42 @@
       "dependsOn": [
         "^dev:prepare"
       ]
+    },
+    "test": {
+      "dependsOn": [
+        "^test"
+      ]
+    },
+    "coverage": {
+      "dependsOn": [
+        "^coverage"
+      ]
+    },
+    "deploy:patch": {
+      "dependsOn": [
+        "^test",
+        "^build",
+        "^deploy:patch"
+      ]
+    },
+    "deploy:minor": {
+      "dependsOn": [
+        "^test",
+        "^build",
+        "^deploy:minor"
+      ]
+    },
+    "deploy:major": {
+      "dependsOn": [
+        "^test",
+        "^build",
+        "^deploy:major"
+      ]
+    },
+    "clean": {
+      "dependsOn": [
+        "^clean"
+      ]
     }
   }
 }
