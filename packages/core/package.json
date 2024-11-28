@@ -1,7 +1,7 @@
 {
   "name": "@relativistic-ui/gravity-core",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "private": false,
   "description": "Core types, etc for @relativistic-ui/gravity",
   "author": "Bahiul Neel Upadhyaya",
