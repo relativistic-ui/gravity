@@ -1,6 +1,6 @@
 {
   "name": "@relativistic-ui/gravity-nuxt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Gravity Nuxt module",
   "repository": "your-org/my-module",
   "license": "MIT",
@@ -28,9 +28,9 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit",
-    "deploy:patch": "yarn version --patch && yarn publish",
-    "deploy:minor": "yarn version --minor && yarn publish",
-    "deploy:major": "yarn version --major && yarn publish"
+    "deploy:patch": "yarn version --patch && yarn publish --access public",
+    "deploy:minor": "yarn version --minor && yarn publish --access public",
+    "deploy:major": "yarn version --major && yarn publish --access public"
   },
   "dependencies": {
     "@nuxt/kit": "^3.14.1592",
