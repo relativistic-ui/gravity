@@ -51,7 +51,6 @@ jobs:
           # Update version
           yarn version --${{ steps.version.outputs.bump }} --no-git-tag-version
           NEW_VERSION=$(node -p "require('./package.json').version")
-          yarn version:apply
 
           # Create version commit and tag
           git add .

@@ -12,23 +12,24 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo test",
     "coverage": "turbo coverage",
-    "version": "yarn workspaces foreach version --deferred",
-    "version:check": "yarn workspaces foreach version check",
-    "version:apply": "yarn workspaces foreach version apply",
+    "postversion": "tsx scripts/sync-versions.ts",
     "clean": "turbo clean && rm -rf node_modules",
     "deploy": "turbo deploy"
   },
   "devDependencies": {
     "prettier": "^3.4.1",
+    "prettier-plugin-embed": "^0.4.15",
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
     "turbo": "^2.3.3",
-    "typescript": "5.7.2",
-    "prettier-plugin-embed": "^0.4.15"
+    "typescript": "5.7.2"
   },
   "engines": {
     "node": ">=18"
   },
   "packageManager": "yarn@1.22.22",
   "workspaces": [
+    "scripts",
     "apps/*",
     "packages/*",
     "shared/*"
