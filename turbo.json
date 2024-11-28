@@ -4,6 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": [
+        "dev:prepare",
         "^build"
       ],
       "inputs": [
@@ -47,24 +48,27 @@
         "^coverage"
       ]
     },
+    "testedBuild": {
+      "dependsOn": [
+        "test",
+        "build"
+      ]
+    },
     "deploy:patch": {
       "dependsOn": [
-        "^test",
-        "^build",
+        "testedBuild",
         "^deploy:patch"
       ]
     },
     "deploy:minor": {
       "dependsOn": [
-        "^test",
-        "^build",
+        "testedBuild",
         "^deploy:minor"
       ]
     },
     "deploy:major": {
       "dependsOn": [
-        "^test",
-        "^build",
+        "testedBuild",
         "^deploy:major"
       ]
     },
