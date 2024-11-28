@@ -1,16 +1,16 @@
 import { defineNuxtModule, addPlugin, createResolver, addImports } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+// export interface ModuleOptions {}
 
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule({
   meta: {
     name: '@relativistic-ui/gravity',
     configKey: 'gravity',
   },
   // Default configuration options of the Nuxt module
   defaults: {},
-  setup(_options, nuxt) {
+  setup(_options, _nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
@@ -20,7 +20,7 @@ export default defineNuxtModule<ModuleOptions>({
     addImports({
       name: 'useIntent',
       as: 'useIntent',
-      from: '@relativistic-ui/gravity-vue'
+      from: '@relativistic-ui/gravity-vue',
     })
   },
 })

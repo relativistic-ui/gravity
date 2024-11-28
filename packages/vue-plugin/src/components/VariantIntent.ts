@@ -1,7 +1,8 @@
-import { defineComponent, VNode, SlotsType, EmitsOptions } from "vue";
+import type { AffordanceIntent, ArrangeIntent, Intent, InteractIntent, PresentIntent } from '@relativistic-ui/gravity-core'
+import type { EmitsOptions, SlotsType, VNode } from 'vue'
 
-import { AffordanceIntent, ArrangeIntent, Intent, InteractIntent, PresentIntent } from "@relativistic-ui/gravity-core";
-import { useIntent } from "../composables/useIntent.js";
+import { defineComponent } from 'vue'
+import { useIntent } from '../composables/useIntent.js'
 
 interface Slots {
   default: (intent: Intent) => VNode
@@ -14,7 +15,7 @@ interface Props {
   present?: PresentIntent
 }
 
-export default /*#__PURE__*/ defineComponent<Props, EmitsOptions, string, SlotsType<Slots>>(
+export default /* #__PURE__ */ defineComponent<Props, EmitsOptions, string, SlotsType<Slots>>(
   (props: Props, { slots }) => {
     const intent = useIntent(props)
 
@@ -22,6 +23,6 @@ export default /*#__PURE__*/ defineComponent<Props, EmitsOptions, string, SlotsT
   },
   {
     name: 'VariantIntent',
-    props: ['arrange', 'affords', 'interact', 'present']
-  }
+    props: ['arrange', 'affords', 'interact', 'present'],
+  },
 )

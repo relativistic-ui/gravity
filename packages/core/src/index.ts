@@ -1,4 +1,4 @@
-export * from './intent'
-export type * from './types'
+export * from './intent.js'
+export type * from './types/index.js'
 
 export {}

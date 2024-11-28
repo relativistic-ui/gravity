@@ -29,7 +29,7 @@ export type AffordanceIntent =
 export type IntentLabel = ArrangeIntent | PresentIntent | InteractIntent | AffordanceIntent
 
 // Helper type for parsing string directive values
-export type Intent = {
+export interface Intent {
   arrange?: ArrangeIntent
   present?: PresentIntent
   interact?: InteractIntent
@@ -38,9 +38,9 @@ export type Intent = {
 
 export type IntentPattern<T> = `${T & string}` | RegExp | boolean
 
-export type IntentQuery = {
+export interface IntentQuery {
   arrange?: IntentPattern<ArrangeIntent>
   present?: IntentPattern<PresentIntent>
   interact?: IntentPattern<InteractIntent>
   affords?: IntentPattern<AffordanceIntent>
-} 
+}

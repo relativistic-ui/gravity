@@ -18,6 +18,5 @@
         "parser": "vue"
       }
     }
-  ],
-  "plugins": ["prettier-plugin-embed"]
+  ]
 }

@@ -1,13 +1,12 @@
 export type UnionOf<T> = T extends (infer U)[] ? U : never
 
 export type UnionToArray<T> =
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   UnionToIntersection<T extends any ? (t: T) => T : never> extends (_: any) => infer W
     ? [...UnionToArray<Exclude<T, W>>, W]
     : []
 
-type KeysOf<T> = T extends T ? keyof T : never
-type ValuesOf<T> = T extends T ? T[keyof T] : never
+export type KeysOf<T> = T extends T ? keyof T : never
+export type ValuesOf<T> = T extends T ? T[keyof T] : never
 
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (
   x: infer R
@@ -78,7 +77,7 @@ type RemoveFromTuple<T extends unknown[], U> = T extends [infer F, ...infer R]
     : [F, ...RemoveFromTuple<R, U>]
   : T
 
-type UniqueTuples<T extends unknown[], F = T[number]> = [] extends T
+export type UniqueTuples<T extends unknown[], F = T[number]> = [] extends T
   ? []
   : F extends F
     ? [F] | [F, ...UniqueTuples<RemoveFromTuple<T, F>>] | UniqueTuples<RemoveFromTuple<T, F>>

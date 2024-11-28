@@ -1,11 +1,11 @@
 {
   "extends": "@relativistic-ui/typescript-config/vue.json",
-  "include": ["./src/**/*"],
-  "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["dist", "build", "node_modules"]
 }

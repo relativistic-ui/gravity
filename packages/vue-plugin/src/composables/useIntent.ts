@@ -1,7 +1,8 @@
-import { computed, ComputedRef, inject, isRef, MaybeRef, provide, ref, unref } from "vue";
-import { deriveIntent } from "@relativistic-ui/gravity-core";
+import type { Intent } from '@relativistic-ui/gravity-core'
+import type { ComputedRef, MaybeRef } from 'vue'
+import { deriveIntent } from '@relativistic-ui/gravity-core'
 
-import type { Intent } from "@relativistic-ui/gravity-core";
+import { computed, inject, isRef, provide, ref, unref } from 'vue'
 
 export const GRAVITY_INTENT_KEY = 'GRAVITY_INTENT'
 
