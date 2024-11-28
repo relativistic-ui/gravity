@@ -1,6 +1,6 @@
 {
   "name": "@relativistic-ui/gravity-vue",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "main": "./dist/index.js",
   "require": "./dist/index.cjs",
@@ -19,9 +19,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "deploy:patch": "yarn version --patch && yarn publish",
-    "deploy:minor": "yarn version --minor && yarn publish",
-    "deploy:major": "yarn version --major && yarn publish"
+    "deploy:patch": "yarn version --patch && yarn publish --access public",
+    "deploy:minor": "yarn version --minor && yarn publish --access public",
+    "deploy:major": "yarn version --major && yarn publish --access public"
   },
   "dependencies": {
     "vue": "^3.0.0"
