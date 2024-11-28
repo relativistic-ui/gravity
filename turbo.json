@@ -45,6 +45,7 @@
     },
     "test": {
       "dependsOn": [
+        "build",
         "^test"
       ]
     },
@@ -53,15 +54,9 @@
         "^coverage"
       ]
     },
-    "testedBuild": {
-      "dependsOn": [
-        "test",
-        "build"
-      ]
-    },
     "deploy": {
       "dependsOn": [
-        "testedBuild"
+        "test"
       ],
       "cache": false
     },
