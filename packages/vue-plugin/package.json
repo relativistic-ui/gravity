@@ -1,7 +1,6 @@
 {
   "name": "@relativistic-ui/gravity-vue",
   "type": "module",
-  "version": "1.0.4",
   "private": false,
   "license": "MIT",
   "sideEffects": false,
@@ -38,5 +37,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "version": "0.0.0"
 }
