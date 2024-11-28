@@ -1,6 +1,6 @@
 {
   "name": "@relativistic-ui/gravity",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,9 +17,9 @@
     "deploy": "turbo deploy"
   },
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "prettier": "^3.4.1",
     "prettier-plugin-embed": "^0.4.15",
-    "@types/node": "^22.10.1",
     "tsx": "^4.19.2",
     "turbo": "^2.3.3",
     "typescript": "5.7.2"
