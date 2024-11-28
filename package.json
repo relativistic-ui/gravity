@@ -1,5 +1,6 @@
 {
   "name": "@relativistic-ui/gravity",
+  "version": "1.0.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,10 +12,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo test",
     "coverage": "turbo coverage",
-    "deploy:patch": "turbo deploy:patch",
-    "deploy:minor": "turbo deploy:minor",
-    "deploy:major": "turbo deploy:major",
-    "clean": "turbo clean && rm -rf node_modules"
+    "version": "yarn workspaces foreach version --deferred",
+    "version:check": "yarn workspaces foreach version check",
+    "version:apply": "yarn workspaces foreach version apply",
+    "clean": "turbo clean && rm -rf node_modules",
+    "deploy": "turbo deploy"
   },
   "devDependencies": {
     "prettier": "^3.4.1",

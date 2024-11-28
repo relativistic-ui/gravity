@@ -1,7 +1,7 @@
 {
   "name": "@relativistic-ui/gravity-vue",
   "type": "module",
-  "version": "0.0.5",
+  "version": "1.0.4",
   "private": false,
   "license": "MIT",
   "sideEffects": false,
@@ -19,10 +19,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "test": "vitest run",
     "test:watch": "vitest",
-    "coverage": "vitest run --coverage",
-    "deploy:patch": "yarn version --patch && yarn publish --access public",
-    "deploy:minor": "yarn version --minor && yarn publish --access public",
-    "deploy:major": "yarn version --major && yarn publish --access public"
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "vue": "^3.0.0"

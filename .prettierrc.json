@@ -2,8 +2,8 @@
   "semi": false,
   "trailingComma": "es5",
   "singleQuote": true,
-  "printWidth": 100,
-  "arrowParens": "always",
+  "printWidth": 80,
+  "arrowParens": "avoid",
   "useTabs": false,
   "tabWidth": 2,
   "htmlWhitespaceSensitivity": "ignore",
@@ -18,5 +18,6 @@
         "parser": "vue"
       }
     }
-  ]
+  ],
+  "endOfLine": "lf"
 }

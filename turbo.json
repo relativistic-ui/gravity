@@ -59,28 +59,17 @@
         "build"
       ]
     },
-    "deploy:patch": {
+    "deploy": {
       "dependsOn": [
-        "testedBuild",
-        "^deploy:patch"
-      ]
-    },
-    "deploy:minor": {
-      "dependsOn": [
-        "testedBuild",
-        "^deploy:minor"
-      ]
-    },
-    "deploy:major": {
-      "dependsOn": [
-        "testedBuild",
-        "^deploy:major"
-      ]
+        "testedBuild"
+      ],
+      "cache": false
     },
     "clean": {
       "dependsOn": [
         "^clean"
-      ]
+      ],
+      "cache": false
     }
   }
 }

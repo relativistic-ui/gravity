@@ -23,15 +23,14 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit",
-    "deploy:patch": "yarn version --patch && yarn publish --access public",
-    "deploy:minor": "yarn version --minor && yarn publish --access public",
-    "deploy:major": "yarn version --major && yarn publish --access public"
+    "deploy:patch": "yarn publish --access public",
+    "deploy:minor": "yarn publish --access public",
+    "deploy:major": "yarn publish --access public"
   },
   "dependencies": {
     "@nuxt/kit": "^3.14.1592",
