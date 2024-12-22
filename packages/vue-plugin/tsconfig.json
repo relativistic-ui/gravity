@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@relativistic-ui/gravity-core": ["../core/src/index.ts"],
+      "@relativistic-ui/gravity-core/types": ["../core/src/types/index.ts"]
     }
   },
   "include": ["./src/**/*"],

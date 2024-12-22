@@ -1,5 +1,6 @@
 import { createGravityPlugin } from '@relativistic-ui/gravity-vue'
 import type { Intent } from '@relativistic-ui/gravity-core'
+import * as gravity from '@relativistic-ui/gravity-core'
 import { defineNuxtPlugin } from '#app'
 
 interface GravityRuntimeConfig {
@@ -14,4 +15,15 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(createGravityPlugin({
     initialIntent: options.initialIntent,
   }))
+  return {
+    provide: {
+      gravity,
+    },
+  }
 })
+
+declare module '#app' {
+  interface NuxtApp {
+    $gravity: typeof gravity
+  }
+}

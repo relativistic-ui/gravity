@@ -1,16 +1,16 @@
 import type { Application, Fitness, Principle, ReferenceFrame, SomeDesignToken } from './types/index.js'
 import * as Token from './token.js'
 
-export function apply(app: Application, context: ReferenceFrame) {
-  return app(context)
+export function apply(app: Application, frame: ReferenceFrame) {
+  return app(frame)
 }
 
-export function *applyIterator(someApplications: Application[], context: ReferenceFrame) {
+export function *applyIterator(someApplications: Application[], frame: ReferenceFrame) {
   while (someApplications.length > 0) {
     const app = someApplications.shift()
     if (!app)
       return
-    yield apply(app, context) as Fitness
+    yield apply(app, frame) as Fitness
   }
 }
 

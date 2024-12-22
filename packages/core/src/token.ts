@@ -12,4 +12,8 @@ export function someToken<N extends string>(name: N): SomeDesignToken {
   return someDesignToken(designToken(name))
 }
 
+export function tokenName(token: SomeDesignToken): string {
+  return token?.(token => token)
+}
+
 export const defaultToken = someToken('GRAVITY_DEFAULT')
