@@ -1,9 +1,8 @@
 export type UnionOf<T> = T extends (infer U)[] ? U : never
 
-export type UnionToArray<T> =
-  UnionToIntersection<T extends any ? (t: T) => T : never> extends (_: any) => infer W
-    ? [...UnionToArray<Exclude<T, W>>, W]
-    : []
+export type UnionToArray<T> = UnionToIntersection<T extends any ? (t: T) => T : never> extends (_: any) => infer W
+  ? [...UnionToArray<Exclude<T, W>>, W]
+  : []
 
 export type KeysOf<T> = T extends T ? keyof T : never
 export type ValuesOf<T> = T extends T ? T[keyof T] : never

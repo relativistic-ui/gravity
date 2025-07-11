@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { Principle } from '@relativistic-ui/gravity-core/types'
-import { usePrinciple } from '@/composables/usePrinciple.js'
+import type { Principle } from '@relativistic-ui/gravity-core'
+
 import { tokenName } from '@relativistic-ui/gravity-core'
 import { computed } from 'vue'
+import { usePrinciple } from '@/composables/usePrinciple.js'
 
 const props = defineProps<{
   principle: Principle

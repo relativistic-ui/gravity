@@ -6,7 +6,11 @@ import { someToken } from '@relativistic-ui/gravity-core'
 import { computed, unref } from 'vue'
 import { useFrame } from './useFrame.js'
 
-export function usePrinciple(principle: Principle | Ref<Principle>, defaultToken: SomeDesignToken = someToken('default')) {
+export function usePrinciple(principle: Principle | Ref<Principle>, defaultToken: SomeDesignToken = someToken('default')): {
+  first: Ref<SomeDesignToken>
+  tokens: Ref<Iterator<SomeDesignToken>>
+  preferred: Ref<SomeDesignToken>
+} {
   const frame = useFrame()
 
   return {

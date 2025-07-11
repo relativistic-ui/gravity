@@ -20,11 +20,7 @@ export type AffordanceCategory = 'consume' | 'input' | 'action'
 
 export type Affordance = ConsumeAffordance | InputAffordance | ActAffordance
 
-export type AffordanceIntent =
-  | `${AffordanceCategory}`
-  | `consume:${ConsumeAffordance}`
-  | `input:${InputAffordance}`
-  | `action:${ActAffordance}`
+export type AffordanceIntent = `${AffordanceCategory}` | `consume:${ConsumeAffordance}` | `input:${InputAffordance}` | `action:${ActAffordance}`
 
 export type IntentLabel = ArrangeIntent | PresentIntent | InteractIntent | AffordanceIntent
 
@@ -42,7 +38,7 @@ export interface IntentQuery {
   arrange?: IntentPattern<ArrangeIntent>
   present?: IntentPattern<PresentIntent>
   interact?: IntentPattern<InteractIntent>
-  affords?: IntentPattern<AffordanceIntent>
+  affords?: IntentPattern<Affordance>
 }
 
 export type IntentToken = string

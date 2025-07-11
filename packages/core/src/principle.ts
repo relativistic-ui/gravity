@@ -1,11 +1,11 @@
 import type { Application, Fitness, Principle, ReferenceFrame, SomeDesignToken } from './types/index.js'
 import * as Token from './token.js'
 
-export function apply(app: Application, frame: ReferenceFrame) {
+export function apply(app: Application, frame: ReferenceFrame): Fitness {
   return app(frame)
 }
 
-export function *applyIterator(someApplications: Application[], frame: ReferenceFrame) {
+export function* applyIterator(someApplications: Application[], frame: ReferenceFrame): Generator<Fitness> {
   while (someApplications.length > 0) {
     const app = someApplications.shift()
     if (!app)
@@ -16,7 +16,7 @@ export function *applyIterator(someApplications: Application[], frame: Reference
 
 export function createPrinciple(apps: Application[], defaultToken: SomeDesignToken = Token.defaultToken): Principle {
   return {
-    *tokens(frame) {
+    * tokens(frame) {
       for (const fitness of applyIterator(apps, frame))
         yield fitness.token
     },
