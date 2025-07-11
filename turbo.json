@@ -1,6 +1,5 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
   "tasks": {
     "build": {
       "dependsOn": [
@@ -45,7 +44,6 @@
     },
     "test": {
       "dependsOn": [
-        "build",
         "^test"
       ]
     },
@@ -63,6 +61,18 @@
     "clean": {
       "dependsOn": [
         "^clean"
+      ],
+      "cache": false
+    },
+    "clean:all": {
+      "dependsOn": [
+        "^clean:all"
+      ],
+      "cache": false
+    },
+    "postinstall": {
+      "dependsOn": [
+        "^postinstall"
       ],
       "cache": false
     }

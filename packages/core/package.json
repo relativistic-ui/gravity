@@ -11,7 +11,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist .turbo",
+    "clean:all": "rm -rf dist .turbo node_modules",
     "dev": "tsc --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -20,7 +21,7 @@
     "@relativistic-ui/typescript-config": "*"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.11.2",
-    "typescript": "^5.7.2"
+    "@antfu/eslint-config": "^4.16.2",
+    "typescript": "latest"
   }
 }

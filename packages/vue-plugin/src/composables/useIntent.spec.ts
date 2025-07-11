@@ -2,7 +2,7 @@ import type { AffordanceIntent, ArrangeIntent, InteractIntent, PresentIntent } f
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import { defineComponent, h } from 'vue'
-import { useIntent } from '../useIntent.js'
+import { useIntent } from './useIntent.js'
 
 describe('useIntent', () => {
   it('returns empty intent when no props provided', () => {

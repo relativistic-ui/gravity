@@ -7,33 +7,29 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./src/types/index.ts",
+      "default": "./src/index.ts"
     },
     "./composables": {
-      "types": "./dist/composables.d.ts",
-      "import": "./dist/composables.js",
-      "require": "./dist/composables.cjs"
+      "types": "./src/composables/index.ts",
+      "default": "./src/composables/index.ts"
     },
     "./components": {
-      "types": "./dist/components.d.ts",
-      "import": "./dist/components.js",
-      "require": "./dist/components.cjs"
+      "types": "./src/components/index.ts",
+      "default": "./src/components/index.ts"
     }
   },
-  "main": "./dist/index.js",
-  "require": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/types/index.ts",
   "files": [
-    "dist/**"
+    "README.md",
+    "src"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "clean": "rm -rf dist .turbo",
+    "clean:all": "rm -rf dist .turbo node_modules",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage"
@@ -42,16 +38,15 @@
     "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.11.2",
+    "@antfu/eslint-config": "^4.16.2",
     "@relativistic-ui/gravity-core": "*",
     "@relativistic-ui/typescript-config": "*",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue": "^6.0.0",
     "@vue/test-utils": "^2.4.6",
-    "eslint": "^9.15.0",
-    "happy-dom": "^15.11.7",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "eslint": "^9.30.1",
+    "happy-dom": "^18.0.1",
+    "typescript": "latest",
+    "vitest": "*"
   },
   "publishConfig": {
     "access": "public"

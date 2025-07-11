@@ -7,7 +7,7 @@ import { computed, inject, isRef, provide, ref, unref } from 'vue'
 export const GRAVITY_INTENT_KEY = 'GRAVITY_INTENT'
 
 export function useIntent(intent: MaybeRef<Intent> = {}): ComputedRef<Intent> {
-  let previousIntent = inject(GRAVITY_INTENT_KEY) || {}
+  let previousIntent = inject(GRAVITY_INTENT_KEY, {})
   if (!isRef(previousIntent)) {
     previousIntent = ref(previousIntent)
   }

@@ -1,7 +1,7 @@
 import type { AffordanceIntent, ArrangeIntent, Intent, InteractIntent, PresentIntent } from '@relativistic-ui/gravity-core'
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import VariantIntent from '../VariantIntent.js'
+import VariantIntent from './VariantIntent.js'
 
 describe('variantIntent', () => {
   it('renders with default props', () => {
